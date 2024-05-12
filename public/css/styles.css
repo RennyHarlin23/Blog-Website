@@ -30,7 +30,7 @@
 }
 
 .btn:hover{
-    color: #1A4D2E
+    box-shadow: 0px 0px 6px #4F6F52;
 }
 
 .content-container{
