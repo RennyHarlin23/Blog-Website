@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    background-color: #E8DFCA;
+    color: #4F6F52;
+}
+
+.header{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-container{
+    display: flex;
+    margin: 20px;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.btn{
+    text-decoration: none;
+    border: 2px solid #4F6F52;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    font-size: 1em;
+}
+
+.btn:hover{
+    color: #1A4D2E
+}
+
+.content-container{
+    background-image: url("./../images/tree_back.jpg");
+    min-height: 100vh;
+    max-height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.content{
+    margin: 0 200px;
+    padding: 20px 40px;
+}
+
+textarea{
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    overflow: auto;
+}
+
+#title{
+    height: 30px;
+    width: 100%;
+    padding: 10px;
+}
+
+.post{
+    border: solid 2px #4F6F52;
+    border-radius: 5px;
+}
+
+.blog{
+    border: solid 2px #4F6F52;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
+}
+
+
+h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.card-link{
+    text-decoration: none;
+}
+
+.blog:hover{
+    box-shadow: 0px 0px 6px #4F6F52;
+}

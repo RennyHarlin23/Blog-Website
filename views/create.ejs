@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="nav-container">
+        <div class="header">
+            My Blog
+        </div>
+        <div class="btn-container">
+            <a href="/" class="btn">Home</a>
+            <a href="/create" class="btn">Create Button</a>
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="content">
+            <h1>Create Post</h1>
+            <form action="/create" method="post">
+                <label for="title">Title</label>
+                <br>
+                <input type="text" id="title" name="title" class="post" required>
+                <br>
+                <label for="blog">Blog</label>
+                <br>
+                <textarea name="blog" id="blog" class="post" required></textarea>
+                <button type="submit" class="btn">Post</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
