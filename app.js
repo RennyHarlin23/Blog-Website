@@ -38,13 +38,13 @@ app.post('/create', (req, res) => {
 app.get('/posts/:id',async (req, res)=>{
     const arr = await database.findAsync({});
     arr.forEach(item => {
-        if(item.title === req.params.id){
-        
-        const title = item.title;
-        const post = item.post;
-        const date = item.date;
-    
-        res.render("post", {title: title, post: post, date:date});
+        if(item._id === req.params.id){
+        res.render("post", {item: item});
         }
     })
+})
+
+app.get('/delete/:id', async (req, res)=>{
+    const numRemoved = await database.removeAsync({_id: req.params.id}, {});
+    res.redirect('/');
 })

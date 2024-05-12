@@ -4,14 +4,17 @@
         <div class="content-container">
             <div class="content">
                 <h1>
-                    <%=title%>
+                    <%=item.title%>
                 </h1>
                 <div><em>
-                        <%=date%>
+                        <%=item.date%>
                     </em></div>
                 <div style="text-align: justify;">
-                    <%=post%>
+                    <%=item.post%>
                 </div>
+                <br>
+                <a href="/edit" class="btn">Edit</a>
+                <a href="/delete/<%=item._id%>" class="btn">Delete</a>
             </div>
         </div>
     </body>
