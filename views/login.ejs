@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="hero-container">
+      <div class="nav-container">
+        <div class="header">My Blog</div>
+        <div class="btn-container">
+          <a href="/blog" class="btn">Home</a>
+          <a href="/login" class="btn">Login/Register</a>
+        </div>
+      </div>
+      <div class="login-container">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" class="post" placeholder="Username"/>
+          <br />
+          <label for="password">Password:</label>
+          <input type="text" id="password" name="password" class="post" placeholder="Password"/>
+          <br>
+            <button type="submit" class="btn">Sign in</button>
+            <a href="/register" class="btn">Register</a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

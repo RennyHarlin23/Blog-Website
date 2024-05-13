@@ -1,18 +1,19 @@
-<%- include('partials/header'); -%>
-    <div class="content-container">
-        <div class="content">
-            <h2>"Write what should not be forgotten." - Isabel Allende</h2>
-            <% arr.forEach(item => { %>
-                <a href="/posts/<%=item._id%>" class="card-link">
-                    <div class="blog">
-                        <h3><%=item.title%></h3>
-                        <p><em><%=item.date%></em></p>
-                        <p><%=item.post%>
-                     </p>
-                    </div> 
-                </a>           
-             <% }) %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+      <div class="nav-container">
+        <div class="header">My Blog</div>
+        <div class="btn-container">
+          <a href="/blog" class="btn">Home</a>
+          <a href="/login" class="btn">Login/Register</a>
         </div>
-    </div>
-</body>
-</html>
+      </div>
+    <a href="/blog" class="btn">Start Reading</a>
+    </body>
+    </html>
