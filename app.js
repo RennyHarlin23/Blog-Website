@@ -34,19 +34,24 @@ app.post('/create/:id', async(req, res) => {
     const currentDate = new Date();
 
     const body = {
+        _id: Math.random().toString(16).slice(2),
         title: req.body.title,
         post: req.body.blog,
-        date: currentDate.toDateString()
+        date: currentDate.toDateString(),
     }
     await newdb.updateAsync({_id: req.params.id}, {$push: {docs: body}})
     const found = await newdb.findAsync({_id: req.params.id});
-    console.log(found[0]);
     res.render('blog',{arr: found[0].docs, id: req.params.id});
 })
 
-app.get('/posts/:id',async (req, res)=>{
-    const item = await database.findAsync({_id: req.params.id});
-    res.render('post', {item: item[0]});
+app.get('/posts/:userid/blogs/:blogid',async (req, res)=>{
+    const user = await newdb.findAsync({_id: req.params.userid});
+    user[0].docs.forEach(item =>{
+        if(item._id === req.params.blogid){
+            res.render('explore-post',{item});
+        }
+    })
+    res.end();
 })
 
 app.get('/delete/:id', async (req, res)=>{
@@ -60,7 +65,6 @@ app.get('/login', (req, res) => {
 
 app.post('/login', async (req, res) => {
     const found = await newdb.findAsync({username: req.body.username});
-    console.log(found);
     if(found.length === 0){
         res.redirect('/register');
     }
@@ -86,4 +90,18 @@ app.post('/register', (req, res) => {
     }
     newdb.insert(entry);
     res.redirect('/login');
+})
+
+app.get('/explore', async (req, res) => {
+    const blogs = await newdb.findAsync({});
+    const arr = [];
+    blogs.forEach(user => {
+        const userid = user._id;
+        user.docs.forEach(item => {
+            item.userId = userid;
+            arr.push(item);
+        })
+    })
+    arr.sort(()=>Math.random() - 0.5);
+    res.render('explore', {arr: arr});
 })

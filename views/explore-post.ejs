@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="nav-container">
+      <div class="header">My Blog</div>
+      <div class="btn-container">
+        <a href="/" class="btn">Home</a>
+        <a href="/create" class="btn">Create Button</a>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="content">
+        <h1><%=item.title%></h1>
+        <div><em> <%=item.date%> </em></div>
+        <div style="text-align: justify"><%=item.post%></div>
+        <br />
+      </div>
+    </div>
+  </body>
+</html>
