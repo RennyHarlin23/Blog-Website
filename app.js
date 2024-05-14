@@ -21,9 +21,9 @@ app.get('/', (req, res) => {
     res.render('home');
 })
 
-app.get('/blog', async (req, res) => {
-    const docs = await database.findAsync({});
-    res.render('blog',{arr: docs});
+app.get('/blog/:userid', async (req, res) => {
+    const found = await newdb.findOne({_id: req.params.userid});
+    res.render('blog',{arr: found.docs, id: found._id});
 })
 
 app.get('/create/:id', (req, res) => {
@@ -44,19 +44,31 @@ app.post('/create/:id', async(req, res) => {
     res.render('blog',{arr: found[0].docs, id: req.params.id});
 })
 
-app.get('/posts/:userid/blogs/:blogid',async (req, res)=>{
+app.get('/exploreposts/:userid/blogs/:blogid',async (req, res)=>{
     const user = await newdb.findAsync({_id: req.params.userid});
     user[0].docs.forEach(item =>{
         if(item._id === req.params.blogid){
-            res.render('explore-post',{item});
+            res.render('explore-post',{item: item});
         }
     })
     res.end();
 })
 
-app.get('/delete/:id', async (req, res)=>{
-    const numRemoved = await database.removeAsync({_id: req.params.id}, {});
-    res.redirect('/');
+app.get('/posts/:userid/blogs/:blogid',async (req, res)=>{
+    const user = await newdb.findAsync({_id: req.params.userid});
+    user[0].docs.forEach(item =>{
+        if(item._id === req.params.blogid){
+            res.render('post',{item: item, id: req.params.userid});
+        }
+    })
+    res.end();
+})
+
+app.get('/delete/:userid/blogs/:blogid', async (req, res)=>{
+    const found = await  newdb.findOne({_id: req.params.userid});
+    found.docs = found.docs.filter(item => item._id !== req.params.blogid);
+    await newdb.update({_id: req.params.userid},found);
+    res.redirect(`/blog/${req.params.userid}`);
 })
 
 app.get('/login', (req, res) => {
